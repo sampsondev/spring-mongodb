@@ -13,7 +13,8 @@ import org.springframework.data.mongodb.core.SimpleMongoClientDatabaseFactory;
 public class AppConfig {
     @Bean
     public SimpleMongoClientDatabaseFactory mongoDbFactory() throws UnknownHostException{
-        return new SimpleMongoClientDatabaseFactory("mongodb://18.188.95.74:27017/gotham");
+        String connectionString = System.getenv("connectionString");
+        return new SimpleMongoClientDatabaseFactory( connectionString);
 //        return new SimpleMongoClientDatabaseFactory(new MongoClient("localhost", 27017), "test");
     }
 
